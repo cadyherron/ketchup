@@ -24,6 +24,9 @@ Step 2: Clone this repo
 Step 3: Run the following from the command line:
 
 `irb`
+
 `load 'ketchup.rb'`
+
 `k = Ketchup.new('github_username', 'github_api_key')`
+
 `k.run`
