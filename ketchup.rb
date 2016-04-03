@@ -57,7 +57,7 @@ class Ketchup
 
   def fake_commit(date)
     `git add .`
-    `GIT_AUTHOR_DATE='#{date}' GIT_COMMITTER_DATE='#{date}' git commit -m 'Mirrored commit'`
+    `GIT_AUTHOR_DATE='#{date}' GIT_COMMITTER_DATE='#{date}' git commit -m 'Private commit'`
   end
 
 
@@ -66,21 +66,6 @@ class Ketchup
     Dir.chdir('ketchup-repo') do
       `git push -u origin master`
     end
-  end
-
-
-  def select_forks
-    selected_forks = forks.map do |fork|
-      puts "Would you like to ketchup #{fork}? (y/n)"
-      answer = gets.chomp
-      case answer
-      when /^[Yy]/
-        fork
-      else
-        nil
-      end
-    end.compact
-    selected_forks
   end
 
 
@@ -107,18 +92,14 @@ class Ketchup
 
 
   def run
-    selected_forks = select_forks
-    p selected_forks
-    # clone_ketchup
-    # selected_forks.each do |fork|
-    #   ketchup_history(fork)
-    # end
-    # push
-    # remove_ketchup_folder
+    clone_ketchup
+    forks.each do |fork|
+      ketchup_history(fork)
+    end
+    push
+    remove_ketchup_folder
   end
 
   
 end
 
-k = Ketchup.new('cadyherron', '95f57933faf9dac7f055105e8aa092689e82380b')
-k.run

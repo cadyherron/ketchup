@@ -3,7 +3,7 @@
 
 #### WHAT IS THIS?
 
-Ketchup is a service to mirror all your hidden commits to your Github commit history.
+Ketchup is a service that takes all your commits to forked projects and mirrors them to your public commit history.
 
 
 #### WHY SHOULD I USE THIS?
@@ -23,5 +23,7 @@ Step 2: Clone this repo
 
 Step 3: Run the following from the command line:
 
+`irb`
+`load 'ketchup.rb'`
 `k = Ketchup.new('github_username', 'github_api_key')`
 `k.run`
